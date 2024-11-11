@@ -20,7 +20,7 @@ import br.com.apifunilaria.projeto.model.Servico;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/servico")
+@RequestMapping("/novoservico")
 public class ServicoController {
 
     @Autowired
