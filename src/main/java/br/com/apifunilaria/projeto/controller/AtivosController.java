@@ -15,43 +15,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.apifunilaria.projeto.DAO.IListAtivos;
-import br.com.apifunilaria.projeto.model.ListAtivos;
+import br.com.apifunilaria.projeto.DAO.IAtivos;
+import br.com.apifunilaria.projeto.model.Ativos;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/listativos")
-public class ListAtivosController {
+@RequestMapping("/ativos")
+public class AtivosController {
 
     @Autowired
-    private IListAtivos dao;
+    private IAtivos dao;
 
     @GetMapping
-    public ResponseEntity<List<ListAtivos>> ListaListAtivoss() {
-        List<ListAtivos> lista = (List<ListAtivos>) dao.findAll();
+    public ResponseEntity<List<Ativos>> ListaAtivos() {
+        List<Ativos> lista = (List<Ativos>) dao.findAll();
         return ResponseEntity.status(200).body(lista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<ListAtivos>> VerListAtivoss(@PathVariable Integer id) {
-        Optional<ListAtivos> lista = dao.findById(id);
+    public ResponseEntity<Optional<Ativos>> VerAtivos(@PathVariable Integer id) {
+        Optional<Ativos> lista = dao.findById(id);
         return ResponseEntity.status(200).body(lista);
     }
 
     @PostMapping
-    public ResponseEntity<ListAtivos> criarListAtivos(@RequestBody ListAtivos ListAtivos) {
-        ListAtivos ListAtivosNovo = dao.save(ListAtivos);
-        return ResponseEntity.status(201).body(ListAtivosNovo);
+    public ResponseEntity<Ativos> criarAtivos(@RequestBody Ativos Ativos) {
+        Ativos AtivosNovo = dao.save(Ativos);
+        return ResponseEntity.status(201).body(AtivosNovo);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ListAtivos> editarListAtivos(@RequestBody ListAtivos ListAtivos) {
-        ListAtivos ListAtivosNovo = dao.save(ListAtivos);
-        return ResponseEntity.status(201).body(ListAtivosNovo);
+    public ResponseEntity<Ativos> editarAtivos(@RequestBody Ativos Ativos) {
+        Ativos AtivosNovo = dao.save(Ativos);
+        return ResponseEntity.status(201).body(AtivosNovo);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluirListAtivos(@PathVariable Integer id) {
+    public ResponseEntity<?> excluirAtivos(@PathVariable Integer id) {
         dao.deleteById(id);
         return ResponseEntity.status(204).build();
     }
